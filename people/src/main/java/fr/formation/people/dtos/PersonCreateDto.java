@@ -1,10 +1,13 @@
 package fr.formation.people.dtos;
 
+import org.springframework.lang.Nullable;
+
 import java.time.LocalDate;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 
 /*
@@ -13,15 +16,20 @@ import javax.validation.constraints.Past;
  */
 public class PersonCreateDto {
 
+	@Size(min=1, max=255)
 	@NotBlank
 	private String firstName;
 
+	@Size(min=1, max=255)
 	@NotBlank
 	private String lastName;
 
 	@NotNull
 	@Past
 	private LocalDate birthDate;
+
+	@Nullable
+	private Long addressId;
 
 	public PersonCreateDto() {
 		//
@@ -49,6 +57,14 @@ public class PersonCreateDto {
 
 	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public Long getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId( Long addressId) {
+		this.addressId = addressId;
 	}
 
 	@Override

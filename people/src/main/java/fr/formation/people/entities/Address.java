@@ -1,11 +1,25 @@
 package fr.formation.people.entities;
 
+import javax.persistence.*;
+
+@Entity // Cette classe est mapée avec une table
+@Table(name = "addresses") // Nom de la table différent de celui de la classe
 public class Address {
-	
+
+	@Id // Ce champ est la clef primaire
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(length = 30, nullable = false)
 	private String country;
+
+	@Column(length = 100, nullable = false)
 	private String street;
+
+	@Column(length = 50, nullable = false)
 	private String city;
+
+	@Column(name = "zipcode", length = 20, nullable = false)
 	private String zipCode;
 	
 	public Address() {

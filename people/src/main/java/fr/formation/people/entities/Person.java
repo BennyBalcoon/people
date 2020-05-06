@@ -1,16 +1,36 @@
 package fr.formation.people.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "persons")
 public class Person {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(nullable = false) // length par défaut = 255
 	private String firstName;
 
+	@Column(nullable = false)
 	private String lastName;
 
+	@Column(nullable = false)
 	private LocalDate birthDate;
+
+	@ManyToOne
+	@JoinColumn(nullable = true)
+	private Address address;
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public Person() {
 		//
