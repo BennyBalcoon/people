@@ -20,7 +20,7 @@ public class Person {
 	@Column(nullable = false)
 	private LocalDate birthDate;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = true)
 	private Address address;
 

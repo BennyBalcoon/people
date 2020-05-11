@@ -2,6 +2,7 @@ package fr.formation.people.services;
 
 import fr.formation.people.dtos.PersonCreateDto;
 import fr.formation.people.dtos.PersonDto;
+import fr.formation.people.entities.Address;
 import fr.formation.people.entities.Person;
 import fr.formation.people.repositories.AddressJpaRepository;
 import fr.formation.people.repositories.PersonJpaRepository;
@@ -29,7 +30,9 @@ public class PersonServiceImpl implements PersonService {
         person.setFirstName(dto.getFirstName());
         person.setLastName(dto.getLastName());
         person.setBirthDate(dto.getBirthDate());
-        person.setAddress(addressRepository.getOne(dto.getAddressId()));
+        Address address = addressRepository.getOne(dto.getAddressId());
+        System.out.println(dto.getAddressId());
+        person.setAddress(address);
         personRepository.save(person); // insert into persons values (dto...)
     }
 
