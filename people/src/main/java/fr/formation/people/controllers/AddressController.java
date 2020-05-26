@@ -28,7 +28,7 @@ public class AddressController {
 	}
 
 	@DeleteMapping("/{id}") // DELETE "/addresses/1" où 1 correspond à l'id d'une adresse existante en bdd
-	public void delete(@PathVariable("/{id}") Long id) {
+	public void delete(@PathVariable("id") Long id) {
 		service.delete(id);
 	}
 
@@ -46,4 +46,10 @@ public class AddressController {
 	public List<AddressDto> getAll() {
 		return service.getAll();
 	}
+
+	@GetMapping("searchByCity/{city}")
+	public List<AddressDto> getAllByCity(@PathVariable("city") String city) {
+		return service.getAllByCity(city);
+	}
+
 }

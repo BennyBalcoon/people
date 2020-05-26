@@ -13,4 +13,7 @@ public interface AddressService {
     AddressDto get(Long id);
 
     List<AddressDto> getAll();
+
+    List<AddressDto> getAllByCity(String city);
+
 }

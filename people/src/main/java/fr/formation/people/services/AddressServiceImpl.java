@@ -67,5 +67,20 @@ public class AddressServiceImpl implements AddressService{
         return result;
     }
 
-
+    @Override
+    public List<AddressDto> getAllByCity(String city) {
+        List<Address> addressesByCity = repository.findByCity(city);
+        List<AddressDto> result = new ArrayList<>();
+        for (Address address :
+                addressesByCity) {
+            AddressDto dto = new AddressDto();
+            dto.setId(address.getId());
+            dto.setStreet(address.getStreet());
+            dto.setCity(address.getCity());
+            dto.setZipCode(address.getZipCode());
+            dto.setCountry(address.getCountry());
+            result.add(dto);
+        }
+        return result;
+    }
 }
